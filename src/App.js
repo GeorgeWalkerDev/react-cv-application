@@ -1,5 +1,6 @@
 import Header from './Components/MainHeader'
 import AppSection from './Components/AppSection';
+import EmptyCV from './Components/RenderCV/EmptyCV'
 import {useState} from 'react'
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   const [experience, setExperience] = useState([
     {id: 8, htmlFor: 'companyName', value: '', inputType: 'text', label: 'Company Name'},
     {id: 9, htmlFor: 'title', value: '', inputType: 'text', label: 'Position Title'},
-    {id: 10, htmlFor: 'tasks', value: '', inputType: 'textarea', label: 'Describe main tasks'},
+    {id: 10, htmlFor: 'tasks', value: '', inputType: 'textarea', label: 'Describe Main Tasks & Responsibilites'},
     {id: 11, htmlFor: 'dateFrom', value: '', inputType: 'date', label: 'Date From'},
     {id: 12, htmlFor: 'dateTo', value: '', inputType: 'date', label: 'Date To'},
   ])
@@ -57,6 +58,7 @@ function App() {
       <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
       <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
       <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection}/>
+      <EmptyCV />
     </div>
   );
 }
