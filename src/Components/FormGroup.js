@@ -10,7 +10,7 @@ const FormGroup = ({ formInfo, update }) => {
             </div>
             )
     }
-
+    
     return (
     <div className="form-group mt-4">
         <label className="form-label" htmlFor={formInfo.htmlFor}>{formInfo.label}</label>

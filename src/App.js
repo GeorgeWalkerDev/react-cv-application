@@ -1,6 +1,6 @@
 import Header from './Components/MainHeader'
 import AppSection from './Components/AppSection';
-import EmptyCV from './Components/RenderCV/EmptyCV'
+// import EmptyCV from './Components/RenderCV/EmptyCV'
 import {useState} from 'react'
 
 function App() {
@@ -19,11 +19,13 @@ function App() {
   ])
 
   const [experience, setExperience] = useState([
-    {id: 8, htmlFor: 'companyName', value: '', inputType: 'text', label: 'Company Name'},
-    {id: 9, htmlFor: 'title', value: '', inputType: 'text', label: 'Position Title'},
-    {id: 10, htmlFor: 'tasks', value: '', inputType: 'textarea', label: 'Describe Main Tasks & Responsibilites'},
-    {id: 11, htmlFor: 'dateFrom', value: '', inputType: 'date', label: 'Date From'},
-    {id: 12, htmlFor: 'dateTo', value: '', inputType: 'date', label: 'Date To'},
+    [
+      {id: 8, htmlFor: 'companyName', value: '', inputType: 'text', label: 'Company Name'},
+      {id: 9, htmlFor: 'title', value: '', inputType: 'text', label: 'Position Title'},
+      {id: 10, htmlFor: 'tasks', value: '', inputType: 'textarea', label: 'Describe Main Tasks & Responsibilites'},
+      {id: 11, htmlFor: 'dateFrom', value: '', inputType: 'date', label: 'Date From'},
+      {id: 12, htmlFor: 'dateTo', value: '', inputType: 'date', label: 'Date To'}
+    ]
   ])
 
   const [generalVisible, setGeneralVisible] = useState(true)
@@ -37,7 +39,9 @@ function App() {
     setEducation(education.map(info => info.id === id ? {...info, value: input} : info))
   }
   const updateExperience = (input, id) => {
-    setExperience(experience.map(info => info.id === id ? {...info, value: input} : info))
+    setExperience(experience.map(
+      info => info.map(item => item.id === id ? {...item, value: input} : item)
+      ))
   }
 
   const toggleGeneralSection = (e) => {
@@ -53,13 +57,25 @@ function App() {
     setExperienceVisible(!experienceVisible)
   }
 
+  const addExperience = () => {
+    const generateID = () => Math.floor(Math.random() * 10000) + 1;
+    const newExp = [
+      {id: generateID(), htmlFor: 'companyName', value: '', inputType: 'text', label: 'Company Name'},
+      {id: generateID(), htmlFor: 'title', value: '', inputType: 'text', label: 'Position Title'},
+      {id: generateID(), htmlFor: 'tasks', value: '', inputType: 'textarea', label: 'Describe Main Tasks & Responsibilites'},
+      {id: generateID(), htmlFor: 'dateFrom', value: '', inputType: 'date', label: 'Date From'},
+      {id: generateID(), htmlFor: 'dateTo', value: '', inputType: 'date', label: 'Date To'}
+    ];
+    setExperience([...experience, newExp])
+  }
+
   return (
     <div className="container">
       <Header />
       <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
       <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
-      <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection}/>
-      <EmptyCV general={general} education={education} experience={experience}/>
+      <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection} addExperience={addExperience}/>
+      {/* <EmptyCV general={general} education={education} experience={experience}/> */}
     </div>
   );
 }
