@@ -1,6 +1,6 @@
 import Header from './Components/MainHeader'
 import AppSection from './Components/AppSection';
-// import EmptyCV from './Components/RenderCV/EmptyCV'
+import EmptyCV from './Components/RenderCV/EmptyCV'
 import {useState} from 'react'
 
 function App() {
@@ -75,7 +75,7 @@ function App() {
       <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
       <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
       <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection} addExperience={addExperience}/>
-      {/* <EmptyCV general={general} education={education} experience={experience}/> */}
+      <EmptyCV general={general} education={education} experience={experience}/>
     </div>
   );
 }

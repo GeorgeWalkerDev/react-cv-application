@@ -3,7 +3,7 @@ import React from 'react'
 const CVHeader = ({general, experience}) => {
 
     const name = general.filter(info => info.htmlFor === 'name')[0].value
-    const title = experience.filter(info => info.htmlFor === 'title')[0].value
+    const title = experience[0].filter(info => info.htmlFor === 'title')[0].value
 
     return (
     <header>
