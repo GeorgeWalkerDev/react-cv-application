@@ -68,29 +68,9 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <AppSection 
-        update={updateGeneral} 
-        formInfo={general} 
-        sectionTitle='General' 
-        visible={generalVisible} 
-        toggleSection={toggleGeneralSection}
-      />
-      <AppSection 
-        update={updateEducation} 
-        formInfo={education} 
-        sectionTitle='Education' 
-        visible={educationVisible} 
-        toggleSection={toggleEducationSection}
-        formCount={educationForm}
-      />
-      <AppSection 
-        update={updateExperience} 
-        formInfo={experience} 
-        sectionTitle='Experience' 
-        visible={experienceVisible} 
-        toggleSection={toggleExperienceSection}
-        formCount={experienceForm}
-      />
+      <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
+      <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
+      <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection}/>
       <EmptyCV general={general} education={education} experience={experience}/>
     </div>
   );
