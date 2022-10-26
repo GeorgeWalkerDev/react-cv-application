@@ -6,8 +6,8 @@ class Main extends React.Component {
     render(){
         return (
             <main className='row'>
-                <Details experience={this.props.experience} education={this.props.education}/>
-                <Aside general={this.props.general}/>
+                <Details general={this.props.general} experience={this.props.experience} education={this.props.education}/>
+                <Aside general={this.props.general} education={this.props.education}/>
             </main>
         )
     }

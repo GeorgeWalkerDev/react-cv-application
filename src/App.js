@@ -8,7 +8,8 @@ function App() {
   const [general, setGeneral] = useState([
     {id: 1, htmlFor: 'name', value: '', inputType: 'text', label: 'Name'},
     {id: 2, htmlFor: 'email', value: '', inputType: 'email', label: 'Email'},
-    {id: 3, htmlFor: 'telephone', value: '', inputType: 'tel', label: 'Phone Number'}
+    {id: 3, htmlFor: 'telephone', value: '', inputType: 'tel', label: 'Phone Number'},
+    {id: 4, htmlFor: 'summary', value: '', inputType: 'textarea', label: 'Personal Summary'}
   ])
 
   const [education, setEducation] = useState([
@@ -28,6 +29,8 @@ function App() {
   const [generalVisible, setGeneralVisible] = useState(true)
   const [educationVisible, setEducationVisible] = useState(true)
   const [experienceVisible, setExperienceVisible] = useState(true)
+
+  const [educationForm, setEducationForm] = useState(2)
 
   const updateGeneral = (input, id) => {
     setGeneral(general.map(info => info.id === id ? {...info, value: input} : info))
@@ -55,9 +58,28 @@ function App() {
   return (
     <div className="container">
       <Header />
-      <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
-      <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
-      <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection}/>
+      <AppSection 
+        update={updateGeneral} 
+        formInfo={general} 
+        sectionTitle='General' 
+        visible={generalVisible} 
+        toggleSection={toggleGeneralSection}
+      />
+      <AppSection 
+        update={updateEducation} 
+        formInfo={education} 
+        sectionTitle='Education' 
+        visible={educationVisible} 
+        toggleSection={toggleEducationSection}
+        formCount={educationForm}
+      />
+      <AppSection 
+        update={updateExperience} 
+        formInfo={experience} 
+        sectionTitle='Experience' 
+        visible={experienceVisible} 
+        toggleSection={toggleExperienceSection}
+      />
       <EmptyCV general={general} education={education} experience={experience}/>
     </div>
   );

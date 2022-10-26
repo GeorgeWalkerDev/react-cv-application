@@ -4,6 +4,9 @@ class Aside extends React.Component {
     render(){
         const email = this.props.general.filter(info => info.htmlFor === 'email')[0].value;
         const phone = this.props.general.filter(info => info.htmlFor === 'telephone')[0].value;
+        const school = this.props.education.filter(info => info.htmlFor === 'school')[0].value;
+        const subject = this.props.education.filter(info => info.htmlFor === 'subject')[0].value;
+
 
         return (
             <aside className="col-sm-4">
@@ -17,8 +20,8 @@ class Aside extends React.Component {
                 </section>
                 <section className='mt-3'>
                     <h3 className='text-uppercase'>EDUCATION</h3>
-                    <p>School Name</p>
-                    <p>Subject of Study</p>
+                    <p className='fw-bold'>{school ? school :'School Name'}</p>
+                    <p>{subject ? subject : 'Subject of Study'}</p>
                 </section>
             </aside>
         )
