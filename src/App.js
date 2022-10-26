@@ -18,6 +18,15 @@ function App() {
     {id: 7, htmlFor: 'date', value: '', inputType: 'date', label: 'Date of Study'}
   ])
 
+  // const [education, setEducation] = useState([
+  //   {
+  //     id: 1,
+  //     school: {id: 5, htmlFor: 'school', value: '', inputType: 'text', label: 'School Name'},
+  //     subject: {id: 6, htmlFor: 'subject', value: '', inputType: 'text', label: 'Subject of Study'},
+  //     date: {id: 7, htmlFor: 'date', value: '', inputType: 'date', label: 'Date of Study'}
+  //   }
+  // ])
+
   const [experience, setExperience] = useState([
     {id: 8, htmlFor: 'companyName', value: '', inputType: 'text', label: 'Company Name'},
     {id: 9, htmlFor: 'title', value: '', inputType: 'text', label: 'Position Title'},
@@ -30,7 +39,8 @@ function App() {
   const [educationVisible, setEducationVisible] = useState(true)
   const [experienceVisible, setExperienceVisible] = useState(true)
 
-  const [educationForm, setEducationForm] = useState(2)
+  const [educationForm, setEducationForm] = useState(1)
+  const [experienceForm, setExperienceForm] = useState(1)
 
   const updateGeneral = (input, id) => {
     setGeneral(general.map(info => info.id === id ? {...info, value: input} : info))
@@ -79,6 +89,7 @@ function App() {
         sectionTitle='Experience' 
         visible={experienceVisible} 
         toggleSection={toggleExperienceSection}
+        formCount={experienceForm}
       />
       <EmptyCV general={general} education={education} experience={experience}/>
     </div>

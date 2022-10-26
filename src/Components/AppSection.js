@@ -11,8 +11,8 @@ const AppSection = ({formInfo, update, sectionTitle, visible, toggleSection, for
 
     <section className="container border-top pt-3">
       <h2 className='justify-content-between d-flex'>{sectionTitle} <Button className="btn btn-secondary" text="Update" toggleSection={toggleSection} visible={!visible}/></h2>
-      {count.map((form, i) => {
-        return <Form key={key + i} update={update} formInfo={formInfo} visible={visible} toggleSection={toggleSection}/>
+      {count.map((_, i) => {
+        return <Form buttonVisible={i === count.length -1 ? true : false} key={key + i} update={update} formInfo={formInfo} visible={visible} toggleSection={toggleSection}/>
       })}
       {/* <Form update={update} formInfo={formInfo} visible={visible} toggleSection={toggleSection}/> */}
     </section>
