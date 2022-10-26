@@ -58,7 +58,7 @@ function App() {
       <AppSection update={updateGeneral} formInfo={general} sectionTitle='General' visible={generalVisible} toggleSection={toggleGeneralSection}/>
       <AppSection update={updateEducation} formInfo={education} sectionTitle='Education' visible={educationVisible} toggleSection={toggleEducationSection}/>
       <AppSection update={updateExperience} formInfo={experience} sectionTitle='Experience' visible={experienceVisible} toggleSection={toggleExperienceSection}/>
-      <EmptyCV />
+      <EmptyCV general={general} education={education} experience={experience}/>
     </div>
   );
 }
